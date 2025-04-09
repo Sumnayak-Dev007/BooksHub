@@ -13,12 +13,12 @@ function App() {
         lg:`"nav nav" "aside main"`
       }}>
         <GridItem area='nav'><Navbar/>
-        </GridItem>
+        </GridItem> 
         <Show above="lg">
-        <GridItem area='aside'bg='dodgerblue'>ASIDE</GridItem>
+        <GridItem area='aside'>ASIDE</GridItem>
         </Show>
        
-        <GridItem area='main'bg='greenyellow'>
+        <GridItem area='main'>
           <GameGrid/>
         </GridItem>
       </Grid>
