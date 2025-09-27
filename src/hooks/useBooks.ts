@@ -2,9 +2,10 @@ import { useState,useEffect } from "react";
 import apiClient from "../services/api-client"
 import { CanceledError } from "axios";
 
-interface Book{
+export interface Book{
     pk:number;
     title:string;
+    image_url : string;
   }
 
   interface fetchBooksResponse{

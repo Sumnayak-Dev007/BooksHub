@@ -1,5 +1,6 @@
-import { Text } from "@chakra-ui/react";
+import { SimpleGrid, Text } from "@chakra-ui/react";
 import useBooks from "../hooks/useBooks";
+import BookCard from "./BookCard";
 
 
 const BooksGrid = () => {
@@ -7,11 +8,11 @@ const BooksGrid = () => {
   return (
     <>
     {error && <Text>{error}</Text>}
-    <ul>
+    <SimpleGrid column={{sm:1, md:2, lg:3, xl:5}} padding='10px' spacing={10}>
       {books.map((book) => (
-        <li key={book.pk}>{book.title}</li>
+        <BookCard key={book.pk} book={book}/>
       ))}
-    </ul>
+    </SimpleGrid>
     </>
   )
 }
