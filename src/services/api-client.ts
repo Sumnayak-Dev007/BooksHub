@@ -1,10 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
-export default axios.create({
-  baseURL : 'https://api.rawg.io/api',
-  params : {
-    key : '7d619b5a202e402db51c60a3211e5435'
-  }
-})
+const apiClient = axios.create({
+  baseURL: 'http://127.0.0.1:8000/api/', // Books API 
+});
 
- 
+export default apiClient;
