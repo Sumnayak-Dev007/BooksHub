@@ -1,6 +1,7 @@
 import { Card, CardBody, Heading, HStack, Image, Text } from "@chakra-ui/react"
 import { Book } from "../hooks/useBooks" 
 import { FaBook, FaTabletAlt, FaHeadphones } from "react-icons/fa";
+import CriticScore from "./CriticScore";
 
 
 
@@ -37,10 +38,18 @@ const BookCard = ({book}:Props) => {
         />
         <CardBody>
             <Heading fontSize='2xl'>{book.title}</Heading>
-            <Text fontSize="sm" color="gray.200">by {book.author}</Text>
+            <Text fontSize="sm" >by {book.author}</Text>
 
             {/* Show format icon & label */}
-        <FormatIcons formats={book.formats} />
+        
+
+        {/* Ratings */}
+        <HStack marginTop={2} justifyContent="space-between">
+          <FormatIcons formats={book.formats} />
+          <CriticScore rating={book.ratings_count} /> 
+          {/* Example: convert ratings_count to 5-star scale */}
+          
+        </HStack>
         </CardBody>
     </Card>
   )

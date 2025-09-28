@@ -1,17 +1,26 @@
-import { Badge } from '@chakra-ui/react';
-import React from 'react'
-
+import { Badge,Text } from '@chakra-ui/react';
+import { FaStar } from "react-icons/fa";
 interface Props {
-    score: number;
+    rating: number;
 }
 
-const CriticScore = ({score}:Props) => {
-    let color = score>75?'green':score>60?'yellow':'';
+const CriticScore = ({ rating }:Props) => {
+     const color = rating >= 3 ? "green" : "yellow";
+
   return (
-    <Badge colorScheme={color} fontSize='14px' paddingX={2} borderRadius='4px'>
-      {score}
+    <Badge
+      colorScheme={color}
+      px={2}
+      py={1}
+      borderRadius="md"
+      display="inline-flex"
+      alignItems="center"
+      gap={1}
+    >
+      <Text fontWeight="bold" fontSize="sm">{rating.toFixed(1)}</Text>
+      <FaStar size={12} />
     </Badge>
-  )
+  );
 }
 
 export default CriticScore

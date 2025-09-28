@@ -8,6 +8,7 @@ export interface Book{
     author:string;
     image_url : string;
     formats:string[];
+    ratings_count:number;
   }
 
   interface fetchBooksResponse{
