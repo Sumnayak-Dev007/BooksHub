@@ -5,7 +5,9 @@ import { CanceledError } from "axios";
 export interface Book{
     pk:number;
     title:string;
+    author:string;
     image_url : string;
+    formats:string[];
   }
 
   interface fetchBooksResponse{
