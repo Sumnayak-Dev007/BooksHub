@@ -29,7 +29,7 @@ const BookCard = ({book}:Props) => {
   );
 };
   return (
-    <Card borderRadius={10} overflow='hidden' paddingX='5px'>
+    <Card width="300px" borderRadius={10} overflow='hidden' paddingX='10px'>
         <Image src={book.image_url}
          width="100%"
         height="340px"

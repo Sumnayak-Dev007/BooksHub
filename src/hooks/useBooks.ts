@@ -19,21 +19,25 @@ export interface Book{
 
 const useBooks = ()=>{
     const [books,setBooks] = useState<Book[]>([])
-      const [error,setError] = useState<string | null>(null);
+    const [error,setError] = useState<string | null>(null);
+    const [isLoading,setLoading] = useState(false)
     
       
       useEffect(()=>{
         const controller = new AbortController();
+        setLoading(true)
         apiClient.get<fetchBooksResponse>('/treasure',{signal:controller.signal})
-        .then(res=>setBooks(res.data.results))
+        .then((res)=> {setBooks(res.data.results);
+        setLoading(false)})
         .catch(err=>{
             if(err instanceof CanceledError) return;
-            setError(err.message)})
+            setError(err.message);
+            setLoading(false)})
 
         return ()=> controller.abort()
       },[])
 
-      return {books,error};
+      return {books,error,isLoading};
 }
 
 export default useBooks
