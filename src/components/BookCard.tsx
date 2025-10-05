@@ -29,14 +29,14 @@ const BookCard = ({book}:Props) => {
   );
 };
   return (
-    <Card width="300px" borderRadius={10} overflow='hidden' paddingX='10px'>
+    <Card>
         <Image src={book.image_url}
          width="100%"
         height="340px"
         objectFit="cover"
         
         />
-        <CardBody>
+        <CardBody >
             <Heading fontSize='2xl'>{book.title}</Heading>
             <Text fontSize="sm" >by {book.author}</Text>
 
