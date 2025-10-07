@@ -29,7 +29,7 @@ const BookCard = ({book}:Props) => {
   );
 };
   return (
-    <Card>
+    <Card >
         <Image src={book.image_url}
          width="100%"
         height="340px"

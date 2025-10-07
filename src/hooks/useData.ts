@@ -18,12 +18,15 @@ const useData =<T>(endpoint:string) =>{
         const controller = new AbortController();
         setLoading(true)
         apiClient.get<fetchResponse<T>>(endpoint,{signal:controller.signal})
-        .then((res)=> {setData(res.data.results);
-        setLoading(false)})
+        .then((res)=> {
+        setData(res.data.results);
+        setLoading(false)
+        })
         .catch(err=>{
             if(err instanceof CanceledError) return;
             setError(err.message);
-            setLoading(false)})
+            setLoading(false)
+        })
 
         return ()=> controller.abort()
       },[])

@@ -8,7 +8,7 @@ interface Props{
 
 const BookCardContainer = ({children}:Props ) => {
   return (
-    <Box width="300px" borderRadius={10} overflow='hidden' paddingX='10px'>
+    <Box borderRadius={10} overflow='hidden'>
         {children}
 
     </Box>
