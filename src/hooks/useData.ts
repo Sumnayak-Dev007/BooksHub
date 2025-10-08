@@ -8,6 +8,7 @@ interface fetchResponse <T>{
     results:T[];
 }
 
+
 const useData =<T>(endpoint:string, requestConfig?:AxiosRequestConfig, deps?:any[]) =>{
     const [data,setData] = useState<T[]>([])
     const [error,setError] = useState<string | null>(null);
