@@ -3,10 +3,14 @@ import useBooks from "../hooks/useBooks";
 import BookCard from "./BookCard";
 import BookCardSkeleton from "./BookCardSkeleton";
 import BookCardContainer from "./BookCardContainer";
+import { Genre } from "../hooks/useGenre";
 
+interface Props{
+  selectedGenre : Genre|null;
+}
 
-const BooksGrid = () => {
-  const {data,error,isLoading} = useBooks()
+const BooksGrid = ({selectedGenre}:Props) => {
+  const {data,error,isLoading} = useBooks(selectedGenre)
   const skeleton = [1,2,3,4,5,6]
   return (
     <>
@@ -15,10 +19,13 @@ const BooksGrid = () => {
   spacing="10px"
   padding={3}
   >
-      {isLoading && skeleton.map(skeleton => <BookCardContainer> <BookCardSkeleton key={skeleton}/> </BookCardContainer> )}
+      {isLoading && skeleton.map(skeleton => 
+       <BookCardContainer key={skeleton}> 
+         <BookCardSkeleton /> 
+        </BookCardContainer> )}
       {data.map((book) => (
-        <BookCardContainer>
-          <BookCard key={book.pk} book={book}/>
+        <BookCardContainer key={book.pk}>
+          <BookCard  book={book}/>
         </BookCardContainer>
       ))}
     </SimpleGrid>

@@ -1,4 +1,5 @@
 import useData from "./useData";
+import { Genre } from "./useGenre";
 
 export interface Book{
     pk:number;
@@ -11,6 +12,6 @@ export interface Book{
 
  
 
-const useBooks = ()=> useData<Book>('/treasure')
+const useBooks = (selectedGenre: Genre | null)=> useData<Book>('/treasure',{params:{genres: selectedGenre?.slug}},[selectedGenre?.slug])
 
 export default useBooks
