@@ -2,6 +2,7 @@ import { Card, CardBody, Heading, HStack, Image, Text } from "@chakra-ui/react"
 import { Book } from "../hooks/useBooks" 
 import { FaBook, FaTabletAlt, FaHeadphones } from "react-icons/fa";
 import CriticScore from "./CriticScore";
+import FormatIconLIst from "./FormatIconLIst";
 
 
 
@@ -39,6 +40,7 @@ const BookCard = ({book}:Props) => {
         <CardBody >
             <Heading fontSize='2xl'>{book.title}</Heading>
             <Text fontSize="sm" >by {book.author}</Text>
+           <FormatIconLIst formats={book.parent_formats.map(f=>f.format)}/>
 
             {/* Show format icon & label */}
         

@@ -1,6 +1,12 @@
 import useData from "./useData";
 import { Genre } from "./useGenre";
 
+export interface Format{
+  id: number;
+  name:string;
+  slug:string;
+}
+
 export interface Book{
     pk:number;
     title:string;
@@ -8,6 +14,7 @@ export interface Book{
     image_url : string;
     formats:string[];
     ratings_count:number;
+    parent_formats: {format:Format}[];
   }
 
  
