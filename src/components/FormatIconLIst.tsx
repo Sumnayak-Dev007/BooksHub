@@ -25,9 +25,9 @@ const FormatIconLIst = ({formats}:Props) => {
         ebook: FaTabletAlt
     }
   return (
-    <HStack marginY={1}>
+    <HStack marginY={'15px'}>
        {formats.map((format)=>(
-        <Icon as={iconMap[format.slug]} color='gray.500'/>
+        <Icon as={iconMap[format.slug]} color='gray.400'/>
        ))}
     </HStack>
   )

@@ -4,6 +4,7 @@ import BooksGrid from "./components/BooksGrid"
 import GenreList from "./components/GenreList"
 import { useState } from "react"
 import { Genre } from "./hooks/useGenre"
+import FormatSelecror from "./components/FormatSelecror"
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         </Show>
        
         <GridItem area='main'>
+          <FormatSelecror/>
         <BooksGrid selectedGenre={selectedGenre} />
         </GridItem>
       </Grid>

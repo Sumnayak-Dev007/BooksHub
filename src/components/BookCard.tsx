@@ -1,16 +1,11 @@
 import { Card, CardBody, Heading, HStack, Image, Text } from "@chakra-ui/react"
 import { Book } from "../hooks/useBooks" 
-import { FaBook, FaTabletAlt, FaHeadphones } from "react-icons/fa";
 import CriticScore from "./CriticScore";
 import FormatIconLIst from "./FormatIconLIst";
 
 
 
-const formatIconMap: Record<string, React.ElementType> = {
-  paperback: FaBook,
-  ebook: FaTabletAlt,
-  audiobook: FaHeadphones,
-};
+
 
 
 
@@ -19,16 +14,7 @@ interface Props {
 }
 
 const BookCard = ({book}:Props) => {
-  const FormatIcons = ({ formats }: { formats: string[] }) => {
-  return (
-    <HStack spacing={3} marginY={1}>
-      {formats.map((format) => {
-        const Icon = formatIconMap[format];
-        return Icon ? <Icon key={format} size={20}/> : null;
-      })}
-    </HStack>
-  );
-};
+
   return (
     <Card >
         <Image src={book.image_url}
@@ -46,8 +32,8 @@ const BookCard = ({book}:Props) => {
         
 
         {/* Ratings */}
-        <HStack marginTop={2} justifyContent="space-between">
-          <FormatIcons formats={book.formats} />
+        <HStack marginTop={2} justifyContent="end">
+       
           <CriticScore rating={book.ratings_count} /> 
           {/* Example: convert ratings_count to 5-star scale */}
           

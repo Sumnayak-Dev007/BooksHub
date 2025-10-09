@@ -12,7 +12,6 @@ export interface Book{
     title:string;
     author:string;
     image_url : string;
-    formats:string[];
     ratings_count:number;
     parent_formats: {format:Format}[];
   }
