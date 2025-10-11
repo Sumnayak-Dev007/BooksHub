@@ -26,19 +26,15 @@ const BookCard = ({book}:Props) => {
         <CardBody >
             <Heading fontSize='2xl'>{book.title}</Heading>
             <Text fontSize="sm" >by {book.author}</Text>
-           <FormatIconLIst formats={book.parent_formats.map(f=>f.format)}/>
+            <FormatIconLIst formats={book.parent_formats.map(f=>f.format)}/>
 
-            {/* Show format icon & label */}
-        
-
-        {/* Ratings */}
-        <HStack marginTop={2} justifyContent="end">
-       
-          <CriticScore rating={book.ratings_count} /> 
-          {/* Example: convert ratings_count to 5-star scale */}
-          
-        </HStack>
-        </CardBody>
+ 
+            {/* Ratings */}
+            <HStack marginTop={2} justifyContent="end">
+              <CriticScore rating={book.ratings_count} /> 
+              {/* Example: convert ratings_count to 5-star scale */}
+            </HStack>
+            </CardBody>
     </Card>
   )
 }

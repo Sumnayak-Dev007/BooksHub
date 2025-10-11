@@ -1,5 +1,5 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
-import useBooks from "../hooks/useBooks";
+import useBooks, { Format } from "../hooks/useBooks";
 import BookCard from "./BookCard";
 import BookCardSkeleton from "./BookCardSkeleton";
 import BookCardContainer from "./BookCardContainer";
@@ -7,10 +7,11 @@ import { Genre } from "../hooks/useGenre";
 
 interface Props{
   selectedGenre : Genre|null;
+  selectedFormat: Format|null;
 }
 
-const BooksGrid = ({selectedGenre}:Props) => {
-  const {data,error,isLoading} = useBooks(selectedGenre)
+const BooksGrid = ({selectedGenre,selectedFormat}:Props) => {
+  const {data,error,isLoading} = useBooks(selectedGenre,selectedFormat)
   const skeleton = [1,2,3,4,5,6]
   return (
     <>

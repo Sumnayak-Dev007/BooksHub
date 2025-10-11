@@ -18,6 +18,10 @@ export interface Book{
 
  
 
-const useBooks = (selectedGenre: Genre | null)=> useData<Book>('/treasure',{params:{genres: selectedGenre?.slug}},[selectedGenre?.slug])
+const useBooks = (selectedGenre: Genre | null,selectedFormat:Format|null)=> 
+  useData<Book>('/treasure',
+  {params:{genres: selectedGenre?.slug,
+  bformat: selectedFormat?.slug}},
+  [selectedGenre?.slug,selectedFormat?.slug])
 
 export default useBooks

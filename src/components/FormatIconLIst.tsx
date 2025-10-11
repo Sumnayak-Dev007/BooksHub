@@ -8,7 +8,6 @@ from 'react-icons/fa'
 import { HStack, Icon} from "@chakra-ui/react"
 import { Format } from "../hooks/useBooks"
 import { IconType } from 'react-icons'
-import { color } from 'framer-motion'
 
 
 interface Props{

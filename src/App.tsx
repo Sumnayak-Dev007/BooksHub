@@ -5,10 +5,12 @@ import GenreList from "./components/GenreList"
 import { useState } from "react"
 import { Genre } from "./hooks/useGenre"
 import FormatSelecror from "./components/FormatSelecror"
+import { Format } from "./hooks/useBooks"
 
 
 function App() {
   const [selectedGenre,setSelectedGenre] = useState<Genre | null>(null)
+  const [selectedFormat,setSelectedFormat] = useState<Format | null>(null)
   return (
     <>
       <Grid templateAreas={{
@@ -32,8 +34,8 @@ function App() {
         </Show>
        
         <GridItem area='main'>
-          <FormatSelecror/>
-        <BooksGrid selectedGenre={selectedGenre} />
+        <FormatSelecror selectedFormat={selectedFormat} onSelectFormat={(format)=>setSelectedFormat(format)}/>
+        <BooksGrid selectedGenre={selectedGenre} selectedFormat={selectedFormat} />
         </GridItem>
       </Grid>
     </>
