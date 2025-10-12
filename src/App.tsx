@@ -5,12 +5,16 @@ import GenreList from "./components/GenreList"
 import { useState } from "react"
 import { Genre } from "./hooks/useGenre"
 import FormatSelecror from "./components/FormatSelecror"
-import { Format } from "./hooks/useBooks"
+import { Book, Format } from "./hooks/useBooks"
 
+
+export interface BookQuery{
+  genre: Genre | null;
+  format: Format | null;
+}
 
 function App() {
-  const [selectedGenre,setSelectedGenre] = useState<Genre | null>(null)
-  const [selectedFormat,setSelectedFormat] = useState<Format | null>(null)
+  const [bookQuery,setBookQuery] =  useState<BookQuery>({} as BookQuery)
   return (
     <>
       <Grid templateAreas={{
@@ -29,13 +33,13 @@ function App() {
         </GridItem> 
         <Show above="lg">
         <GridItem area='aside' paddingRight='10' paddingLeft='1.5'>
-          <GenreList selectedGenre={selectedGenre} onSelectGenre={(genre)=>setSelectedGenre(genre)}/>
+          <GenreList selectedGenre={bookQuery.genre} onSelectGenre={(genre)=>setBookQuery({...bookQuery,genre})}/>
         </GridItem>
         </Show>
        
         <GridItem area='main'>
-        <FormatSelecror selectedFormat={selectedFormat} onSelectFormat={(format)=>setSelectedFormat(format)}/>
-        <BooksGrid selectedGenre={selectedGenre} selectedFormat={selectedFormat} />
+        <FormatSelecror selectedFormat={bookQuery.format} onSelectFormat={(format)=>setBookQuery({...bookQuery,format})}/>
+        <BooksGrid bookQuery={bookQuery} />
         </GridItem>
       </Grid>
     </>

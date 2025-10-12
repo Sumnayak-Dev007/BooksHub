@@ -4,14 +4,16 @@ import BookCard from "./BookCard";
 import BookCardSkeleton from "./BookCardSkeleton";
 import BookCardContainer from "./BookCardContainer";
 import { Genre } from "../hooks/useGenre";
+import { BookQuery } from "../App";
 
 interface Props{
-  selectedGenre : Genre|null;
-  selectedFormat: Format|null;
+  bookQuery: BookQuery;
+  
+  
 }
 
-const BooksGrid = ({selectedGenre,selectedFormat}:Props) => {
-  const {data,error,isLoading} = useBooks(selectedGenre,selectedFormat)
+const BooksGrid = ({bookQuery}:Props) => {
+  const {data,error,isLoading} = useBooks(bookQuery)
   const skeleton = [1,2,3,4,5,6]
   return (
     <>

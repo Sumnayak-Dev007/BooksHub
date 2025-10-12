@@ -1,3 +1,4 @@
+import { BookQuery } from "../App";
 import useData from "./useData";
 import { Genre } from "./useGenre";
 
@@ -18,10 +19,11 @@ export interface Book{
 
  
 
-const useBooks = (selectedGenre: Genre | null,selectedFormat:Format|null)=> 
+const useBooks = (bookQuery:BookQuery)=> 
   useData<Book>('/treasure',
-  {params:{genres: selectedGenre?.slug,
-  bformat: selectedFormat?.slug}},
-  [selectedGenre?.slug,selectedFormat?.slug])
+  {params:{genres: bookQuery.genre?.slug,
+  bformat: bookQuery.format?.slug}},
+  [bookQuery]
+)
 
 export default useBooks
