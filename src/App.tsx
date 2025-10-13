@@ -5,7 +5,8 @@ import GenreList from "./components/GenreList"
 import { useState } from "react"
 import { Genre } from "./hooks/useGenre"
 import FormatSelecror from "./components/FormatSelecror"
-import { Book, Format } from "./hooks/useBooks"
+import {Format } from "./hooks/useBooks"
+import AuthorLIst from "./components/AuthorLIst"
 
 
 export interface BookQuery{
@@ -25,7 +26,7 @@ function App() {
       templateColumns={
         {
           base:'1fr',
-          lg:'200px 1fr'
+          lg:'210px 1fr'
         }
       }
       >
@@ -34,6 +35,7 @@ function App() {
         <Show above="lg">
         <GridItem area='aside' paddingRight='10' paddingLeft='1.5'>
           <GenreList selectedGenre={bookQuery.genre} onSelectGenre={(genre)=>setBookQuery({...bookQuery,genre})}/>
+          <AuthorLIst/>
         </GridItem>
         </Show>
        

@@ -1,9 +1,8 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
-import useBooks, { Format } from "../hooks/useBooks";
+import useBooks from "../hooks/useBooks";
 import BookCard from "./BookCard";
 import BookCardSkeleton from "./BookCardSkeleton";
 import BookCardContainer from "./BookCardContainer";
-import { Genre } from "../hooks/useGenre";
 import { BookQuery } from "../App";
 
 interface Props{
@@ -18,7 +17,7 @@ const BooksGrid = ({bookQuery}:Props) => {
   return (
     <>
     {error && <Text>{error}</Text>}
-    <SimpleGrid columns={{sm:1, md:2, lg:3, xl:5}} 
+    <SimpleGrid columns={{sm:1, md:2, lg:4, xl:6}} 
   spacing="10px"
   padding={3}
   >

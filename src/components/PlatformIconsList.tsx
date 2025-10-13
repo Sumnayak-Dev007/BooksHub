@@ -1,5 +1,5 @@
-import { Platform } from '../hooks/useBooks'
-import { HStack, Icon, Text } from '@chakra-ui/react'
+import { Format } from '../hooks/useBooks'
+import { HStack, Icon} from '@chakra-ui/react'
 import { FaAndroid, FaApple, FaLinux, FaPlaystation, FaWindows, FaXbox } from 'react-icons/fa'
 import { SiNintendo } from 'react-icons/si'
 import { MdPhoneIphone } from 'react-icons/md'
@@ -8,7 +8,7 @@ import { BsGlobe } from 'react-icons/bs'
 
 
 interface Props{
-    platforms: Platform[]
+    platforms: Format[]
 }
 
 

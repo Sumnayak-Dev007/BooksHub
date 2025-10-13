@@ -16,15 +16,16 @@ interface Props {
 const BookCard = ({book}:Props) => {
 
   return (
-    <Card >
+    <Card width='-moz-fit-content' >
         <Image src={book.image_url}
-         width="100%"
-        height="340px"
+         width="80%"
+        height="240px"
         objectFit="cover"
+        marginX='auto'
         
         />
         <CardBody >
-            <Heading fontSize='2xl'>{book.title}</Heading>
+            <Heading fontSize='lg'>{book.title}</Heading>
             <Text fontSize="sm" >by {book.author}</Text>
             <FormatIconLIst formats={book.parent_formats.map(f=>f.format)}/>
 

@@ -1,6 +1,5 @@
 import { BookQuery } from "../App";
 import useData from "./useData";
-import { Genre } from "./useGenre";
 
 export interface Format{
   id: number;
