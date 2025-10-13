@@ -1,4 +1,4 @@
-import { Grid, GridItem, Show } from "@chakra-ui/react"
+import { Grid, GridItem, HStack, Show } from "@chakra-ui/react"
 import Navbar from "./components/Navbar"
 import BooksGrid from "./components/BooksGrid"
 import GenreList from "./components/GenreList"
@@ -7,11 +7,14 @@ import { Genre } from "./hooks/useGenre"
 import FormatSelecror from "./components/FormatSelecror"
 import {Format } from "./hooks/useBooks"
 import AuthorLIst from "./components/AuthorLIst"
+import { Authors } from "./hooks/useAuthors"
+import SortSelector from "./components/SortSelector"
 
 
 export interface BookQuery{
   genre: Genre | null;
   format: Format | null;
+  author: Authors | null;
 }
 
 function App() {
@@ -35,12 +38,16 @@ function App() {
         <Show above="lg">
         <GridItem area='aside' paddingRight='10' paddingLeft='1.5'>
           <GenreList selectedGenre={bookQuery.genre} onSelectGenre={(genre)=>setBookQuery({...bookQuery,genre})}/>
-          <AuthorLIst/>
+          <AuthorLIst selectedAuthors={bookQuery.author} onSelectAuthors={(author)=>setBookQuery({...bookQuery,author})}/>
         </GridItem>
         </Show>
        
         <GridItem area='main'>
+        <HStack spacing={5} paddingLeft={4} marginBottom={2}>
         <FormatSelecror selectedFormat={bookQuery.format} onSelectFormat={(format)=>setBookQuery({...bookQuery,format})}/>
+        <SortSelector/>
+        </HStack>
+        
         <BooksGrid bookQuery={bookQuery} />
         </GridItem>
       </Grid>

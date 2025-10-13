@@ -21,7 +21,8 @@ export interface Book{
 const useBooks = (bookQuery:BookQuery)=> 
   useData<Book>('/treasure',
   {params:{genres: bookQuery.genre?.slug,
-  bformat: bookQuery.format?.slug}},
+  bformat: bookQuery.format?.slug,
+  author: bookQuery.author?.slug,}},
   [bookQuery]
 )
 
