@@ -23,7 +23,7 @@ const SortSelector = ({onSelectSort,sortOrder}:Props) => {
           </MenuButton>
           <MenuList>
           {sortOrders.map((order) => (
-            <MenuItem onClick={()=>onSelectSort(order.value)}> 
+            <MenuItem key={order.label} onClick={()=>onSelectSort(order.value)}> 
             {order. label}
             </MenuItem>))}
          </MenuList>

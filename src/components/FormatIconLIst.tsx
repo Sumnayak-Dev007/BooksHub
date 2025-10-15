@@ -26,7 +26,10 @@ const FormatIconLIst = ({formats}:Props) => {
   return (
     <HStack marginY={'15px'}>
        {formats.map((format)=>(
-        <Icon as={iconMap[format.slug]} color='gray.400'/>
+        <Icon 
+        key={format.slug} 
+        as={iconMap[format.slug]} 
+        color='gray.400'/>
        ))}
     </HStack>
   )

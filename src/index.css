@@ -2,3 +2,7 @@ html, body {
   scrollbar-gutter: stable;
   overflow-y: scroll; /* ensures scrollbar always visible */
 }
+
+form {
+  width: 100%;
+}

@@ -23,7 +23,9 @@ const useBooks = (bookQuery:BookQuery)=>
   {params:{genres: bookQuery.genre?.slug,
   bformat: bookQuery.format?.slug,
   author: bookQuery.author?.slug,
-  ordering:bookQuery.sortOrder}},
+  ordering:bookQuery.sortOrder,
+  search:bookQuery.searchText
+  }},
   [bookQuery]
 )
 

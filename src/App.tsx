@@ -16,6 +16,7 @@ export interface BookQuery{
   format: Format | null;
   author: Authors | null;
   sortOrder: string;
+  searchText : string;
 }
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
         }
       }
       >
-        <GridItem area='nav'><Navbar/>
+        <GridItem area='nav'><Navbar onSearch={(searchText)=>setBookQuery({...bookQuery,searchText})}/>
         </GridItem> 
         <Show above="lg">
         <GridItem area='aside' paddingRight='10' paddingLeft='1.5'>
