@@ -18,8 +18,8 @@ const BookCard = ({book}:Props) => {
   return (
     <Card width='-moz-fit-content' >
         <Image src={book.image_url}
-         width="80%"
-        height="240px"
+         width="85%"
+        height="250px"
         objectFit="cover"
         marginX='auto'
         

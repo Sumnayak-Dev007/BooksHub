@@ -22,7 +22,8 @@ const useBooks = (bookQuery:BookQuery)=>
   useData<Book>('/treasure',
   {params:{genres: bookQuery.genre?.slug,
   bformat: bookQuery.format?.slug,
-  author: bookQuery.author?.slug,}},
+  author: bookQuery.author?.slug,
+  ordering:bookQuery.sortOrder}},
   [bookQuery]
 )
 

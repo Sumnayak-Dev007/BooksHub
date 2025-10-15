@@ -15,6 +15,7 @@ export interface BookQuery{
   genre: Genre | null;
   format: Format | null;
   author: Authors | null;
+  sortOrder: string;
 }
 
 function App() {
@@ -45,7 +46,7 @@ function App() {
         <GridItem area='main'>
         <HStack spacing={5} paddingLeft={4} marginBottom={2}>
         <FormatSelecror selectedFormat={bookQuery.format} onSelectFormat={(format)=>setBookQuery({...bookQuery,format})}/>
-        <SortSelector/>
+        <SortSelector sortOrder={bookQuery.sortOrder} onSelectSort={(sortOrder)=>setBookQuery({...bookQuery,sortOrder})}/>
         </HStack>
         
         <BooksGrid bookQuery={bookQuery} />
