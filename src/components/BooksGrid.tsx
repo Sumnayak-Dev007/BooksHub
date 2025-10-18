@@ -14,9 +14,10 @@ interface Props{
 const BooksGrid = ({bookQuery}:Props) => {
   const {data,error,isLoading} = useBooks(bookQuery)
   const skeleton = [1,2,3,4,5,6]
-  return (
-    <>
-    {error && <Text>{error}</Text>}
+
+  if (error) return <Text>{error}</Text>
+    return (
+    
     <SimpleGrid columns={{sm:1, md:2, lg:4, xl:4}} 
   spacing="10px"
   padding={6}
@@ -31,7 +32,7 @@ const BooksGrid = ({bookQuery}:Props) => {
         </BookCardContainer>
       ))}
     </SimpleGrid>
-    </>
+    
   )
 }
 
