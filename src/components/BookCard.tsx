@@ -16,25 +16,28 @@ interface Props {
 const BookCard = ({book}:Props) => {
 
   return (
-    <Card width='-moz-fit-content' >
+    <Card width='-moz-max-content'>
         <Image src={book.image_url}
-         width="85%"
+         width="95%"
         height="250px"
         objectFit="cover"
         marginX='auto'
         
         />
         <CardBody >
-            <Heading fontSize='lg'>{book.title}</Heading>
-            <Text fontSize="sm" >by {book.author}</Text>
-            <FormatIconLIst formats={book.parent_formats.map(f=>f.format)}/>
+            
+            
+            
 
  
             {/* Ratings */}
-            <HStack marginTop={2} justifyContent="end">
+            <HStack justifyContent="space-between">
+              <FormatIconLIst formats={book.parent_formats.map(f=>f.format)}/>
               <CriticScore rating={book.ratings_count} /> 
               {/* Example: convert ratings_count to 5-star scale */}
             </HStack>
+            <Heading fontSize='lg'>{book.title}</Heading>
+            <Text fontSize="sm" textAlign='left' >by {book.author}</Text>
             </CardBody>
     </Card>
   )

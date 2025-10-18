@@ -17,9 +17,9 @@ const BooksGrid = ({bookQuery}:Props) => {
   return (
     <>
     {error && <Text>{error}</Text>}
-    <SimpleGrid columns={{sm:1, md:2, lg:4, xl:5}} 
+    <SimpleGrid columns={{sm:1, md:2, lg:4, xl:4}} 
   spacing="10px"
-  padding={3}
+  padding={6}
   >
       {isLoading && skeleton.map(skeleton => 
        <BookCardContainer key={skeleton}> 
