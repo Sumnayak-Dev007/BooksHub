@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, GridItem, HStack, Show } from "@chakra-ui/react"
+import { Box, Flex, Grid, GridItem,  Show } from "@chakra-ui/react"
 import Navbar from "./components/Navbar"
 import BooksGrid from "./components/BooksGrid"
 import GenreList from "./components/GenreList"
@@ -9,6 +9,7 @@ import {Format } from "./hooks/useBooks"
 import AuthorLIst from "./components/AuthorLIst"
 import { Authors } from "./hooks/useAuthors"
 import SortSelector from "./components/SortSelector"
+import BookHeading from "./components/BookHeading"
 
 
 export interface BookQuery{
@@ -45,14 +46,16 @@ function App() {
         </Show>
        
         <GridItem area='main'>
-        <Flex paddingLeft={4} marginBottom={2}>
+          <Box paddingLeft={2}>
+          <BookHeading  bookQuery={bookQuery}/>
+        <Flex  marginBottom={2}>
           <Box marginRight={5}>
             <FormatSelecror selectedFormat={bookQuery.format} onSelectFormat={(format)=>setBookQuery({...bookQuery,format})}/>
           </Box>
         
             <SortSelector sortOrder={bookQuery.sortOrder} onSelectSort={(sortOrder)=>setBookQuery({...bookQuery,sortOrder})}/>
         </Flex>
-        
+        </Box>
         <BooksGrid bookQuery={bookQuery} />
         </GridItem>
       </Grid>
