@@ -1,0 +1,422 @@
+swagger: '2.0'
+info:
+  title: "Divinezon API: \U0001F4DABook Hub Database API"
+  description: "\n**Divinezon Books** is your digital vault of literary gems.  \nIt
+    offers access to an expansive collection of books, authors, genres, and formats
+    — all neatly categorized and easy to explore. Whether you’re building a reading
+    app, a book recommendation engine, or a library dashboard, BookTreasure helps
+    you fetch structured, ready-to-use data in seconds. Discover books like hidden
+    treasures — filter them by genre, format, or author, and build your own literary
+    world powered by clean, well-documented REST APIs.\n\n\U0001F4DA **Books:** Retrieve
+    the full list of books, or filter by genres, formats, or authors.  \n\U0001F3F7
+    **Genres:** Explore diverse literary categories from fantasy to nonfiction.  \n\U0001F4D8
+    **Formats:** Get available formats like eBook, paperback, or audiobook.  \n✍️
+    **Authors:** Browse author profiles and their associated works.  \n\U0001F50E
+    **Search:** Instantly find books or authors by name or title with flexible query
+    parameters.\n"
+  contact:
+    email: buildwithsumanayak@gmail.com
+  license:
+    name: MIT License
+  version: v1
+host: books.divinezon.com
+schemes:
+- https
+basePath: /
+consumes:
+- application/json
+produces:
+- application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+- Basic: []
+paths:
+  /api/treasure/:
+    get:
+      operationId: api_treasure_list
+      summary: Get a list of books
+      description: |
+        Retrieve all books or filter by genre, format, author, or search keyword.
+
+        **Available filters:**
+        - `genres`: Filters by book genre .
+        - `bformat`: Filters by book format (e.g., ebook, paperback).
+        - `author`: Filters by author's name.
+        - `search`: Search books by title or author name.
+
+        **Ordering:**
+        - You can sort results by specific fields using the `ordering` parameter.
+        - Add a `-` prefix for descending order.
+
+        **Available ordering fields:**
+        - `title` → Sort by book title.
+        - `released` → Sort by release date.
+        - `added` → Sort by date added.
+        - `updated` → Sort by last update.
+        - `ratings_count` → Sort by total ratings.
+
+        **Examples:**
+        - `/api/treasure/?search=string`
+        - `/api/treasure/?bformat=string`
+        - `/api/treasure/?genres=string`
+        - `/api/treasure/?author=string`
+        - `/api/treasure/?ordering=string`
+      parameters:
+      - name: ordering
+        in: query
+        description: Which field to use when ordering the results.
+        required: false
+        type: string
+      - name: limit
+        in: query
+        description: Number of results to return per page.
+        required: false
+        type: integer
+      - name: offset
+        in: query
+        description: The initial index from which to return the results.
+        required: false
+        type: integer
+      - name: search
+        in: query
+        description: Search keyword to filter books by title or author.
+        type: string
+        example: the alchemist
+      - name: bformat
+        in: query
+        description: Filter books by format (ebook, paperback, hardcover, etc.).
+        type: string
+        example: hardcover
+      - name: genres
+        in: query
+        description: Filter books by genre slug (e.g., romance, mystery, fantasy).
+        type: string
+        example: romance
+      - name: author
+        in: query
+        description: Filter books by author slug (e.g., jane-austen).
+        type: string
+        example: jane-austen
+      responses:
+        '200':
+          description: Successful response — returns paginated list of books.
+          examples:
+            application/json:
+              count: 0
+              next: http://example.com
+              previous: http://example.com
+              results:
+              - pk: 0
+                title: string
+                author: string
+                auth_image: http://example.com
+                content: string
+                genre: self-help
+                price: string
+                parent_formats: {}
+                sale_price: string
+                my_discount: string
+                public: true
+                edit_url: string
+                url: http://example.com
+                image_url: string
+                ratings_count: 0
+                copies_sold: 0
+                posted_by: string
+      tags:
+      - Books
+  /api/treasure/author/:
+    get:
+      operationId: api_treasure_author_list
+      summary: Get list of authors
+      description: Retrieve all authors and their book counts with profile images.
+      parameters: []
+      responses:
+        '200':
+          description: List of Authors
+          examples:
+            application/json:
+              count: 0
+              next: http://example.com
+              previous: http://example.com
+              results:
+              - id: 0
+                name: string
+                slug: string
+                books_count: 0
+                image_background: string
+      tags:
+      - Authors
+  /api/treasure/authors/{slug}/:
+    get:
+      operationId: api_treasure_authors_read
+      summary: Get details of the author
+      description: |-
+        Retrieve detailed information about a specific author by their name, including their name, book count, profile image, and a list of books written by them.
+
+        **Example:** `/api/treasure/authors/paulo coelho/`
+      parameters: []
+      responses:
+        '200':
+          description: Author details
+          examples:
+            application/json:
+              name: string
+              slug: string
+              books_count: 0
+              image_background: https://example.com/media/authors/jane.jpg
+              books:
+              - id: 0
+                title: string
+                genre: string
+                image_url: https://example.com/media/images/pride.jpg
+      tags:
+      - Authors
+  /api/treasure/formats/list/parents/:
+    get:
+      operationId: api_treasure_formats_list_parents_list
+      summary: Get list of formats
+      description: Retrieve all unique book formats like eBook or Paperback.
+      parameters: []
+      responses:
+        '200':
+          description: List of Formats
+          examples:
+            application/json:
+              count: 5
+              next: https://api.booktreasure.com/formats/?page=2
+              previous: https://api.booktreasure.com/formats/?page=1
+              results:
+              - id: 0
+                name: string
+                slug: string
+              - id: 0
+                name: string
+                slug: string
+              - id: 0
+                name: string
+                slug: string
+              - id: 0
+                name: string
+                slug: string
+              - id: 0
+                name: string
+                slug: string
+      tags:
+      - Formats
+  /api/treasure/genres/:
+    get:
+      operationId: api_treasure_genres_list
+      summary: Get list of genres
+      description: Retrieve all book genres with book counts and background images.
+      parameters: []
+      responses:
+        '200':
+          description: List of genres
+          examples:
+            application/json:
+              count: 0
+              next: http://example.com
+              previous: http://example.com
+              results:
+              - id: 0
+                name: string
+                slug: string
+                books_count: 0
+                image_background: string
+      tags:
+      - Genres
+  /api/treasure/genres/{slug}/:
+    get:
+      operationId: api_treasure_genres_read
+      summary: Get details of the genre
+      description: Retrieve detailed information about a specific genre, including
+        its name, slug, book count, and background image.
+      parameters: []
+      responses:
+        '200':
+          description: Genre details
+          examples:
+            application/json:
+              id: 0
+              name: string
+              slug: string
+              books_count: 0
+              image_background: https://example.com/image.jpg
+              books:
+              - id: 0
+                title: string
+                author: string
+                image_url: https://example.com/image.jpg
+      tags:
+      - Genres
+  /api/treasure/{id}/:
+    get:
+      operationId: api_treasure_read
+      summary: Get book detail by ID
+      description: Retrieve a specific book by its ID, including full details like
+        title, author, genre, and rating count.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/BooksSerializers'
+      tags:
+      - Books
+definitions:
+  Register:
+    required:
+    - email
+    - username
+    - password
+    - password2
+    type: object
+    properties:
+      email:
+        title: Email
+        type: string
+        format: email
+        maxLength: 254
+        minLength: 1
+      username:
+        title: Username
+        type: string
+        maxLength: 150
+        minLength: 1
+      password:
+        title: Password
+        type: string
+        minLength: 1
+      password2:
+        title: Password2
+        type: string
+        minLength: 1
+  BooksSerializers:
+    required:
+    - title
+    - author
+    - content
+    type: object
+    properties:
+      pk:
+        title: ID
+        type: integer
+        readOnly: true
+      title:
+        title: Title
+        type: string
+        maxLength: 200
+        minLength: 1
+      author:
+        title: Author
+        type: string
+        maxLength: 150
+        minLength: 1
+      auth_image:
+        title: Auth image
+        type: string
+        readOnly: true
+        x-nullable: true
+        format: uri
+      content:
+        title: Content
+        type: string
+        minLength: 1
+      genre:
+        title: Genre
+        type: string
+        enum:
+        - self-help
+        - romance
+        - trading
+        - manga
+        - psychology
+        - fiction
+        - nonfiction
+        - fantasy
+        - mystery
+        - sci-fi
+        - biography
+        - poetry
+        - philosophical
+        - allegory
+        - motivational
+        - spirituality
+        - health
+        - physiology
+        - leadership
+      price:
+        title: Price
+        type: string
+        format: decimal
+      parent_formats:
+        title: Parent formats
+        type: object
+      sale_price:
+        title: Sale price
+        type: string
+        readOnly: true
+      my_discount:
+        title: My discount
+        type: string
+        readOnly: true
+      public:
+        title: Public
+        type: boolean
+      edit_url:
+        title: Edit url
+        type: string
+        readOnly: true
+      url:
+        title: Url
+        type: string
+        format: uri
+        readOnly: true
+      image_url:
+        title: Image url
+        type: string
+        readOnly: true
+      ratings_count:
+        title: Ratings count
+        type: number
+      copies_sold:
+        title: Copies sold
+        type: integer
+        maximum: 4294967295
+        minimum: 0
+      posted_by:
+        title: Posted by
+        type: string
+        readOnly: true
+        minLength: 1
+  MyTokenObtainPair:
+    required:
+    - username
+    - password
+    type: object
+    properties:
+      username:
+        title: Username
+        type: string
+        minLength: 1
+      password:
+        title: Password
+        type: string
+        minLength: 1
+  TokenRefresh:
+    required:
+    - refresh
+    type: object
+    properties:
+      refresh:
+        title: Refresh
+        type: string
+        minLength: 1
+      access:
+        title: Access
+        type: string
+        readOnly: true
+        minLength: 1

@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Box, Flex, Grid, GridItem,  Show } from "@chakra-ui/react"
 import Navbar from "./components/Navbar"
 import BooksGrid from "./components/BooksGrid"
@@ -10,6 +11,7 @@ import AuthorLIst from "./components/AuthorLIst"
 import { Authors } from "./hooks/useAuthors"
 import SortSelector from "./components/SortSelector"
 import BookHeading from "./components/BookHeading"
+import ApiDocs from "./components/ApiDocs";
 
 
 export interface BookQuery{
@@ -24,6 +26,11 @@ function App() {
   const [bookQuery,setBookQuery] =  useState<BookQuery>({} as BookQuery)
   return (
     <>
+     <Router>
+      <Routes>
+        {/* ✅ Home / Main Books Page */}
+        <Route  path="/"
+          element={
       <Grid templateAreas={{
         base:`"nav" "main"`,
         lg:`"nav nav" "aside main"`
@@ -59,6 +66,13 @@ function App() {
         <BooksGrid bookQuery={bookQuery} />
         </GridItem>
       </Grid>
+      }
+        />
+        {/* ✅ API Docs Page */}
+        <Route path="/api-docs" element={<ApiDocs />} />
+
+         </Routes>
+    </Router>
     </>
   )
 }

@@ -1,4 +1,5 @@
-import authors from "../data/authors";
+import useData from "./useData"
+
 
 export interface Authors {
     id:number;
@@ -8,6 +9,6 @@ export interface Authors {
 }
 
 
-const useAuthors = () =>({data:authors,isLoading:false,error:null})
+const useAuthors = () =>useData<Authors>('/treasure/author')
 
 export default useAuthors

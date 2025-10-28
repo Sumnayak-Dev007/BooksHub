@@ -1,5 +1,5 @@
 
-import { Button, Heading, HStack, Image, List, ListItem, Spinner } from '@chakra-ui/react'
+import { Button, Heading, HStack, Image, List, ListItem} from '@chakra-ui/react'
 import { Authors } from '../hooks/useAuthors'
 import useData from '../hooks/useData'
 
@@ -10,7 +10,7 @@ interface Props{
 const AuthorLIst = ({onSelectAuthors,selectedAuthors}:Props) => {
     const {data,isLoading,error} = useData<Authors>('/treasure/author')
     if (error) return null;
-    if (isLoading) return <Spinner/> 
+    
   return (
     <>
     <Heading fontSize='2xl' marginY={2}>Authors</Heading>
