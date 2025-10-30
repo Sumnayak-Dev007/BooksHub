@@ -1,5 +1,4 @@
-// theme.ts
-import { extendTheme, ThemeConfig } from "@chakra-ui/react";
+import { extendTheme, ThemeConfig, ThemeOverride } from "@chakra-ui/react";
 
 const config: ThemeConfig = {
   initialColorMode: "dark",
@@ -15,9 +14,8 @@ const breakpoints = {
   "2xl": "1536px",
 };
 
-// 🎨 Tailwind-inspired palettes
+// 🎨 Keep Tailwind-inspired palettes for component use (mainly dark mode)
 const colors = {
-  // 🌸 Soft warm background tones (from Tailwind rose + stone)
   rose: {
     50: "#fcebecff",
     100: "#ffe4e6",
@@ -42,7 +40,6 @@ const colors = {
     800: "#292524",
     900: "#1c1917",
   },
-  // optional Tailwind zinc palette for neutral grays
   zinc: {
     50: "#fafafa",
     100: "#f4f4f5",
@@ -57,18 +54,44 @@ const colors = {
   },
 };
 
-// 🪞 Global styles — light mode uses soft blush base, dark mode unchanged
+// 🪞 Global styles
 const styles = {
   global: (props: any) => ({
     body: {
-      bg: props.colorMode === "light" ? "rose.50" : "gray.900",
-      color: props.colorMode === "light" ? "stone.800" : "gray.100",
+      bg: props.colorMode === "light" ? "gray.50" : "gray.900",
+      color: props.colorMode === "light" ? "gray.800" : "gray.100",
       transition: "background-color 0.3s ease, color 0.3s ease",
     },
     "*": {
-      borderColor: props.colorMode === "light" ? "rose.100" : "gray.700",
+      borderColor: props.colorMode === "dark" ? "gray.700" : "gray.200",
     },
   }),
+};
+
+// 🎴 Component defaults (for soft card look in light mode)
+const components: ThemeOverride["components"] = {
+  Card: {
+    baseStyle: (props: any) => ({
+      container: {
+        bg: props.colorMode === "light" ? "gray.100" : "gray.800",
+        transition: "background-color 0.3s ease",
+      },
+    }),
+  },
+  Modal: {
+    baseStyle: (props: any) => ({
+      dialog: {
+        bg: props.colorMode === "light" ? "gray.100" : "gray.800",
+      },
+    }),
+  },
+  Drawer: {
+    baseStyle: (props: any) => ({
+      dialog: {
+        bg: props.colorMode === "light" ? "gray.100" : "gray.800",
+      },
+    }),
+  },
 };
 
 const theme = extendTheme({
@@ -76,7 +99,7 @@ const theme = extendTheme({
   colors,
   breakpoints,
   styles,
+  components,
 });
 
 export default theme;
-
