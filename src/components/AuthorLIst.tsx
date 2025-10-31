@@ -19,7 +19,7 @@ const AuthorLIst = ({onSelectAuthors,selectedAuthors}:Props) => {
             <ListItem key={author.id} paddingY='10px'>
               <HStack>
                 <Image objectFit='cover' boxSize='32px' marginRight='1' borderRadius={8} src={author.image_background}/>
-                <Button whiteSpace='normal' textAlign='left' fontWeight={author.slug === selectedAuthors?.slug?'bold':'normal'} onClick={()=>onSelectAuthors(author)} fontSize='lg' variant='link'>{author.name}</Button>
+                <Button whiteSpace='normal' textAlign='left' color={{ base: "gray.400", _dark: "gray.200" }} fontWeight={author.slug === selectedAuthors?.slug?'bold':'normal'} onClick={()=>onSelectAuthors(author)} fontSize='lg' variant='link'>{author.name}</Button>
               </HStack>
               
     

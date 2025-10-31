@@ -16,7 +16,7 @@ interface Props {
 const BookCard = ({book}:Props) => {
 
   return (
-    <Card width='-moz-max-content' bg={{ base: "rose.100", _dark: "gray.800" }}>
+    <Card width='-moz-max-content' bg={{ base: "gray.500", _dark: "gray.800" }} paddingTop={2}>
         <Image src={book.image_url}
          width="95%"
         height="250px"

@@ -58,8 +58,8 @@ const colors = {
 const styles = {
   global: (props: any) => ({
     body: {
-      bg: props.colorMode === "light" ? "gray.50" : "gray.900",
-      color: props.colorMode === "light" ? "gray.800" : "gray.100",
+      bg: props.colorMode === "light" ? "gray.100" : "gray.900",
+      color: props.colorMode === "light" ? "gray.900" : "gray.100",
       transition: "background-color 0.3s ease, color 0.3s ease",
     },
     "*": {
@@ -73,7 +73,7 @@ const components: ThemeOverride["components"] = {
   Card: {
     baseStyle: (props: any) => ({
       container: {
-        bg: props.colorMode === "light" ? "gray.100" : "gray.800",
+        bg: props.colorMode === "light" ? "zinc.50" : "gray.800",
         transition: "background-color 0.3s ease",
       },
     }),
@@ -81,14 +81,14 @@ const components: ThemeOverride["components"] = {
   Modal: {
     baseStyle: (props: any) => ({
       dialog: {
-        bg: props.colorMode === "light" ? "gray.100" : "gray.800",
+        bg: props.colorMode === "light" ? "gray.200" : "gray.800",
       },
     }),
   },
   Drawer: {
     baseStyle: (props: any) => ({
       dialog: {
-        bg: props.colorMode === "light" ? "gray.100" : "gray.800",
+        bg: props.colorMode === "light" ? "gray.200" : "gray.800",
       },
     }),
   },
