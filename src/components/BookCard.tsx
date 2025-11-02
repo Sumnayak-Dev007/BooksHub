@@ -25,11 +25,6 @@ const BookCard = ({book}:Props) => {
         
         />
         <CardBody >
-            
-            
-            
-
- 
             {/* Ratings */}
             <HStack justifyContent="space-between">
               <FormatIconLIst formats={book.parent_formats.map(f=>f.format)}/>
