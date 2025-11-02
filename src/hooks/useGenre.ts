@@ -8,6 +8,6 @@ export interface Genre {
 }
 
 
-const useGenre = ()=> useData<Genre>('/treasure/genres')
+const useGenre = ()=> useData<Genre>('/treasure/genres/')
 
 export default useGenre

@@ -6,6 +6,6 @@ interface Format{
     slug:string;
 }
 
-const useFormat = ()=> useData<Format>('/treasure/formats/list/parents')
+const useFormat = ()=> useData<Format>('/treasure/formats/list/parents/')
 
 export default useFormat

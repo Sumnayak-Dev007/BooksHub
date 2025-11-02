@@ -9,6 +9,6 @@ export interface Authors {
 }
 
 
-const useAuthors = () =>useData<Authors>('/treasure/author')
+const useAuthors = () =>useData<Authors>('/treasure/author/')
 
 export default useAuthors
