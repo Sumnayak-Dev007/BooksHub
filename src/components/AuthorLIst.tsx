@@ -8,7 +8,7 @@ interface Props{
   selectedAuthors : Authors | null ;
 }
 const AuthorLIst = ({onSelectAuthors,selectedAuthors}:Props) => {
-    const {data,error} = useData<Authors>('/treasure/author')
+    const {data,error} = useData<Authors>('/treasure/author/')
     if (error) return null;
     
   return (
